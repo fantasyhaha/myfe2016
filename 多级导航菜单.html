@@ -68,5 +68,23 @@
         </ul>
     </li>
 </ul>
+<script>
+    var oMenu = document.getElementById('menu');
+    var aMainMenu =oMenu.getElementsByTagName('li');
+    for(var i=0;i<aMainMenu.length;i++){
+        if(aMainMenu[i].className == 'main-menu'){
+            aMainMenu[i].onmouseover =function(){
+               var oSbuMenu = this.getElementsByTagName('ul')[0];
+                oSbuMenu.style.display= 'block';
+            }
+        }
+        if(aMainMenu[i].className == 'main-menu'){
+            aMainMenu[i].onmouseout =function(){
+                var oSbuMenu = this.getElementsByTagName('ul')[0];
+                oSbuMenu.style.display= 'none';
+            }
+        }
+    }
+</script>
 </body>
 </html>

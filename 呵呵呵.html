@@ -2,14 +2,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>多级导航菜单</title>
+    <title>自娱自乐</title>
     <style>
         *{
             margin: 0;
             padding: 0;
         }
         ul,ol{
-            list-style:none;
+            list-style: none;
         }
         a{
             text-decoration: none;
@@ -17,12 +17,12 @@
         #menu{
             height: 30px;
         }
-       #menu .main-menu {
+        #menu .main-menu{
+            margin-right: 5px;
+            width: 100px;
+            height: 30px;
             float: left;
-           width: 100px;
-           height: 30px;
-           margin-right: 10px;
-           background: #446686;
+            background: gray;
         }
         #menu .main-menu a{
             width: 100%;
@@ -31,19 +31,18 @@
             text-align: center;
             line-height: 30px;
         }
-        #menu .sub-menu{
-            background: #66cc55;
+        #menu .sub-menu {
+            background: sandybrown;
             display: none;
-        }
-        #menu .sub-menu li{
-            border-bottom: 1px dashed #000000;
         }
         #menu .sub-menu a{
             text-align: left;
-            text-indent: 10px;
+            text-indent: 5px;
+        }
+        #menu .sub-menu li{
+            border-bottom:1px dashed red;
         }
     </style>
-</head>
 <body>
 <ul id="menu">
     <li class="main-menu">
@@ -72,19 +71,17 @@
     </li>
 </ul>
 <script>
-    var oMenu = document.getElementById('menu');
-    var aMainMenu =oMenu.getElementsByTagName('li');
+      var oMenu = document.getElementById('menu');
+    var aMainMenu = oMenu.getElementsByTagName('li');
     for(var i=0;i<aMainMenu.length;i++){
-        if(aMainMenu[i].className == 'main-menu'){
-            aMainMenu[i].onmouseover =function(){
-               var oSbuMenu = this.getElementsByTagName('ul')[0];
-                oSbuMenu.style.display= 'block';
+        if(aMainMenu[i].className =='main-menu'){
+            aMainMenu[i].onmouseover = function () {
+                var oSubMenu = this.getElementsByTagName('ul')[0];
+                oSubMenu.style.display='block';
             };
-        }
-        if(aMainMenu[i].className == 'main-menu'){
-            aMainMenu[i].onmouseout =function(){
-                var oSbuMenu = this.getElementsByTagName('ul')[0];
-                oSbuMenu.style.display= 'none';
+            aMainMenu[i].onmouseout = function () {
+                var oSubMenu = this.getElementsByTagName('ul')[0];
+                oSubMenu.style.display='none';
             };
         }
     }

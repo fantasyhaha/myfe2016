@@ -14,27 +14,41 @@
         a{
             text-decoration: none;
         }
-        div{
-            width: 100px;
-            height: 30px;
+
+        #menu{
+            overflow: hidden;
+
+        }
+        #menu li{
             float: left;
             margin-right: 5px;
-            /*display: inline-block;*/
+            width: 100px;
+            height: 40px;
+            background: #55aadd;
+            text-align: center;
+            line-height: 40px;
+
         }
-         #a{
-            background: #000000;
+        #menu a{
+            width: 100%;
+            height: 100%;
+            float: left;
         }
-         #b{
-            background: #00cc00;
-        }
-         #c{
-            background: #0000cc;
-        }
+
     </style>
 </head>
 <body>
-<div id="a">a</div>
-<div id="b">b</div>
-<div id="c">c</div>
+
+<ul id="menu">
+    <li>
+        <a href="#">boom</a>
+    </li>
+    <li>
+        <a href="#">b</a>
+    </li>
+    <li>
+        <a href="#">c</a>
+    </li>
+</ul>
 </body>
 </html>

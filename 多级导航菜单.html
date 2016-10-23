@@ -23,6 +23,7 @@
            height: 30px;
            margin-right: 10px;
            background: #446686;
+            border :3px dashed indianred;
         }
        body{
            width: 100%;
@@ -35,13 +36,14 @@
             display: block;
             text-align: center;
             line-height: 30px;
-            color: #ff4466;
+            color: #01f3ff;
+            font-size: 15px;
         }
         #menu .magin-menu{
             margin-right: 0;
         }
         #menu .sub-menu{
-            background: #66cc55;
+            background: #5363cc;
             display: none;
         }
         #menu .sub-menu li{
@@ -52,7 +54,7 @@
             text-indent: 10px;
         }
         #menu .sub-menu a:hover{
-            background: peachpuff;
+            background: #ff7244;
         }
     </style>
 </head>
@@ -85,17 +87,18 @@
 </ul>
 <script>
     var oMenu = document.getElementById('menu');
-    var aMainMenu =oMenu.getElementsByTagName('li');
+    var aMainMenu =oMenu.getElementsByTagName('li');//nodelist
     for(var i=0;i<aMainMenu.length;i++){
         if(aMainMenu[i].className == 'main-menu'|| aMainMenu[i].className == 'main-menu magin-menu') {
             aMainMenu[i].onmouseover = function () {
-                var oSbuMenu = this.getElementsByTagName('ul')[0];
-                oSbuMenu.style.display = 'block';
+                var oSubMenu = this.getElementsByTagName('ul')[0];
+                oSubMenu.style.border ='3px dashed green';
+                oSubMenu.style.display = 'block';
             };
 
             aMainMenu[i].onmouseout = function () {
-                var oSbuMenu = this.getElementsByTagName('ul')[0];
-                oSbuMenu.style.display = 'none';
+                var oSubMenu = this.getElementsByTagName('ul')[0];
+                oSubMenu.style.display = 'none';
             };
         }
     }

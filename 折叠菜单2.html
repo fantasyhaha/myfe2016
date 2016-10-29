@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ol,ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #menu h3{
+            background: #17bab0;
+            width: 100px;
+            height: 30px;
+            color: #5f3ccc;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        #menu .sub-menu{
+            border: 1px solid #ddb21c;
+            display: none;
+            float: left;
+            width: 98px;
+        }
+        #menu .sub-menu a{
+            background: #53ba29;
+            width: 98px;
+            height: 30px;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+        }
+        #menu .dd{
+            margin-bottom: 0;
+        }
+        #menu li{
+            width: 100px;
+            height: 30px;
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li>
+        <h3 class="main-menu">管理区</h3>
+        <ul class="sub-menu">
+            <li><a href="#">001</a></li>
+            <li><a href="#">002</a></li>
+            <li class="dd"><a href="#">003</a></li>
+        </ul>
+    </li>
+    <li>
+        <h3 class="main-menu">交流区</h3>
+        <ul class="sub-menu">
+            <li><a href="#">001</a></li>
+            <li><a href="#">002</a></li>
+            <li class="dd"><a href="#">003</a></li>
+        </ul>
+    </li>
+</ul>
+
+<script>
+    var oMenu = document.getElementById('menu');
+    var aH3 = oMenu.getElementsByTagName('h3');
+    var aSubMenu = oMenu.getElementsByTagName('ul');
+    for(var i=0;i<aH3.length;i++){
+        aH3[i].index = i ;
+        aH3[i].bFlag = false;//一个表示变量，用来标识sub-menu是否显示,true为显示，false为隐藏
+        aH3[i].onclick = function(){
+            if(this.bFlag) {
+                aSubMenu[this.index].style.display = 'none';
+            }
+            else{
+                aSubMenu[this.index].style.display = 'block';
+            }
+            this.bFlag=!this.bFlag;
+        }
+
+
+    }
+
+</script>
+</body>
+</html>

@@ -15,7 +15,7 @@
             text-decoration: none;
         }
         #container{
-            width:375px;
+            width:500px;
             height: 300px;
             margin : 50px auto;
         }
@@ -29,39 +29,67 @@
             background: #17bab0;
             cursor: pointer;
             margin-right: 5px;
-            color: #db33cf;
             line-height: 30px;
             text-align: center;
         }
+        #DD li{
+            margin-top: 5px;
+            margin-left: 370px;
+            background: #53ba29;
+            width: 100px;
+            height: 20px;
+            text-align: center;
+        }
+        #DD .e{
+            margin-top: 10px;
+            margin-left: 450px;
+        }
         #tab .bb{
-            background: #000000;
+            background: #055cba;
             color:#fff;
+            font-size: 20px;
+            font-weight: 900;
         }
         #content div{
             background: #62c583;
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 40px;
+            text-align: center;
+            line-height: 300px;
+            outline-style: inset;
+            outline-color: navajowhite;
         }
         #content{
             background: #a954ba;
-            border: 1px dashed red;
+            border: 5px dashed red;
             height: 300px;
             position: relative;
+            color: darkblue;
         }
     </style>
 </head>
 <body>
+<ul id="DD">
+    <li >一首诗</li>
+    <li class="e">作者:未知</li>
+</ul>
 <div id="container">
+
     <ul id="tab">
-        <li class="bb">选项1</li>
-        <li>选项2</li>
-        <li>选项3</li>
+        <li class="bb">第一句</li>
+        <li>第二句</li>
+        <li>第三句</li>
+        <li>第四句</li>
     </ul>
     <div id="content">
-        <div>001</div>
-        <div>002</div>
-        <div>003</div>
+        <div>离离原上草</div>
+        <div>一木一枯荣</div>
+        <div>野火烧不尽</div>
+        <div>春风吹又生</div>
     </div>
 </div>
 <script src = "jslib.js"></script>
@@ -72,9 +100,9 @@
         var oContent = document.getElementById('content');
         var aDiv =oContent.getElementsByTagName('div');
         for(var j=0;j<aDiv.length;j++){
-            aDiv[j].style.zIndex = aDiv.length-j;
+            aDiv[j].style.zIndex = aDiv.length-j-1;
         }
-        var zIndex = 3 ;
+        var zIndex = aDiv.length ;
         for(var i=0;i<aLi.length;i++) {
             aLi[i].index = i;
             aLi[i].onclick = function () {

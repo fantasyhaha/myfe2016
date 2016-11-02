@@ -11,60 +11,34 @@
         ol,ul{
             list-style: none;
         }
-        table,td,th,tr
-        {
-            border:1px solid black;
-        }
-        #contanier{
-            width: 800px;
-            height: 500px;
-            margin: 100px auto;
-            background: #17bab0;
-            border-top: 2px solid red;
-            border-bottom: 2px solid red;
-            position: relative;
-        }
-        /*#biaodan{*/
-            /*/!*float: left;*!/*/
-            /*margin-left: 600px;*/
-        /*}*/
         #content{
-            position: relative;
-            top: 100px;
-            left: 200px;
             background: #53ba29;
             width: 400px;
             height: 300px;
-            
+            margin: 100px auto;
         }
-        table
-        {
-            width:100%;
-        }
-        th
-        {
-            height:50px;
+        #content .a{
+            float: left;
+            border: 1px dashed red;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-<!--<h3 id="biaodan">注册表单</h3>-->
-<div id="contanier">
     <div id="content">
-        <form action="/example/html/form_action.asp" method="get">
         </table>
         <tr>
-            <td>登陆名称：</td>
+            <td class="a">登陆名称：
+            <input type="text" name="firstname"></td>
+            <br />
+            <td class="a">登陆密码：</td>
             <input type="text" name="firstname">
             <br />
-            <td>登陆密码：</td>
-            <input type="text" name="firstname">
-            <br />
-            <td>密码确认：</td>
+            <td class="a">密码确认：</td>
             <input type="text" name="firstname">
             <br />
         </tr>
-            密码保护问题：
+            <td class="a">密码保护问题：</td>
             <select name="cars">
                 <option value="volvo">你的宠物叫什么</option>
                 <option value="saab">你高中班主任叫什么</option>
@@ -72,7 +46,7 @@
                 <option value="audi">你的第一次给了谁</option>
             </select>
             <br />
-            <td>问题答案：</td>
+            <td class="a">问题答案：</td>
             <input type="text" name="firstname">
             <br />
             男性：
@@ -83,10 +57,6 @@
             <input type="submit" value="Submit" />
 
             <p>请单击确认按钮，输入会发送到服务器上名为 "form_action.asp" 的页面。</p>
-        </form>
-
-
     </div>
-</div>
 </body>
 </html>

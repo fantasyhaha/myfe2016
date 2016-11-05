@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ol,ul{
+            list-style: none;
+        }
+        #div1{
+            width: 100px;
+            height: 100px;
+            background: #17bab0;
+            cursor: pointer;
+            position: absolute;
+            border-radius: 100px;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            background: #53ba29;
+            cursor: pointer;
+            position: absolute;
+            left: 1166px;
+            border-radius: 100px;
+        }
+
+    </style>
+</head>
+<body>
+<div id='div1'>
+</div>
+<div id='div2'>
+</div>
+<script src="jslib.js"></script>
+<script>
+var oDiv1 = document.getElementById('div1');
+var oDiv2 = document.getElementById('div2');
+    oDiv1.onmousedown = function (e) {
+        e = e || window.event;
+        var Left = e.clientX-oDiv1.offsetLeft;
+        var Top = e.clientY-oDiv1.offsetTop;
+//        animate(oDiv1,{opacity:50});
+//        animate(oDiv1,{width:100});
+
+        document.onmousemove = function (e) {
+            e = e || window.event;
+            var iLeft = e.clientX-Left;
+            var iTop = e.clientY-Top;
+            if(iLeft < 0){
+                iLeft = 0;
+            }else if(iLeft > document.documentElement.clientWidth - oDiv1.offsetWidth){
+                iLeft = document.documentElement.clientWidth- oDiv1.offsetWidth;
+            }
+            if(iTop < 0){
+                iTop  = 0;
+            }else if(iTop  > document.documentElement.clientHeight - oDiv1.offsetHeight){
+                iTop  = document.documentElement.clientHeight- oDiv1.offsetHeight;
+            }
+            oDiv1.style.left = iLeft+'px';
+            oDiv1.style.top = iTop+'px';
+        };
+        oDiv1.onmouseup = function () {
+            document.onmousemove = null;
+//            oDiv1.style.opacity = 1;
+        }
+    };
+oDiv2.onmousedown = function (e) {
+    e = e || window.event;
+    var Left = e.clientX-oDiv2.offsetLeft;
+    var Top = e.clientY-oDiv2.offsetTop;
+//    animate(oDiv2,{opacity:60});
+//    animate(oDiv2,{height:100});
+    document.onmousemove = function (e) {
+        e = e || window.event;
+        var iLeft = e.clientX-Left;
+        var iTop = e.clientY-Top;
+        if(iLeft < 0){
+            iLeft = 0;
+        }else if(iLeft > document.documentElement.clientWidth - oDiv1.offsetWidth){
+            iLeft = document.documentElement.clientWidth- oDiv1.offsetWidth;
+        }
+        if(iTop < 0){
+            iTop  = 0;
+        }else if(iTop  > document.documentElement.clientHeight - oDiv1.offsetHeight){
+            iTop  = document.documentElement.clientHeight- oDiv1.offsetHeight;
+        }
+        oDiv2.style.left = iLeft+'px';
+        oDiv2.style.top = iTop+'px';
+    };
+    document.onmouseup = function () {
+        document.onmousemove = null;
+//        oDiv2.style.opacity = 1;
+    }
+}
+
+</script>
+</body>
+</html>

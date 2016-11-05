@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>轮播图-划入划出</title>
     <style>
         *{
             margin: 0;
@@ -11,12 +11,19 @@
         ol,ul{
             list-style: none;
         }
+        body{
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
         #container{
             width: 500px;
             height: 400px;
             position: relative;
             margin: 100px auto;
             overflow: hidden;
+            border-radius: 70px;
         }
         #content{
             width: 2000px;
@@ -27,8 +34,8 @@
         }
         #menu{
             position: absolute;
-            right: 10px;
-            bottom: 10px;
+            right: 30px;
+            bottom: 20px;
         }
         #menu ul{
             overflow: hidden;
@@ -50,22 +57,24 @@
             width: 500px;
             height: 400px;
             float: left;
+            border-radius: 75px;
         }
         #arrow{
             position: absolute;
-            left: 10px;
-            bottom: 10px;
+            left: 30px;
+            bottom:180px;
         }
         #arrow span{
             float: left;
-            width: 20px;
-            height: 20px;
-            background: #99ba9c;
+            width: 40px;
+            height: 40px;
+            background: #b3b9ba;
             text-align: center;
-            line-height: 20px;
+            line-height: 40px;
             cursor: pointer;
-            margin-right: 5px;
-
+            margin-right: 360px;
+            border-radius: 100px;
+            opacity: 0.7;
         }
     </style>
 </head>
@@ -85,7 +94,7 @@
     </ul>
     <div id="arrow">
         <span id="lt">&lt</span>
-        <span id="rt">&gt</span>
+        <span style="margin-right: 0;" id="rt">&gt</span>
     </div>
 </div>
 <script src="jslib.js"></script>
@@ -126,6 +135,18 @@
         }
         changeImg(iNow);
         animate(oContent,{left:-aImg[0].offsetWidth*iNow});
+    };
+    var timer;
+    timer = setInterval(function(){
+        oRt.onclick();
+    },1000);
+    oContainer.onmouseover = function () {
+        clearInterval(timer);
+    };
+    oContainer.onmouseout = function () {
+        timer = setInterval(function(){
+            oRt.onclick();
+        },1000);
     }
 </script>
 </body>

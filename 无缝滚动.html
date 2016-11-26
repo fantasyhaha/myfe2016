@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            margin: 50px auto;
+            border: 5px solid #055cba;
+            position: relative;
+            overflow: hidden;
+            background: #17bab0;
+        }
+        #content{
+            /*width:960px;*/
+            margin-top: 20px;
+            position: absolute;
+        }
+        #content li{
+            width: 100px;
+            height: 80px;
+            float: left;
+            text-align: center;
+            line-height: 80px;
+            font-size: 32px;
+            color: #000000;
+            background: #53ba29;
+            margin-right: 5px;
+        }
+        #arrow{
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            margin-left: -85px;
+        }
+        #arrow span{
+            width: 80px;
+            height: 40px;
+            font-size: 20px;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            background: #dd0d46;
+            color: #000;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="content">
+        <li>锄</li>
+        <li>禾</li>
+        <li>日</li>
+        <li>当</li>
+        <li>午</li>
+        <li>，</li>
+        <li>汗</li>
+        <li>禾</li>
+        <li>下</li>
+        <li>土</li>
+        <li>！</li>
+    </ul>
+    <div id="arrow">
+        <span id="left">&lt;&lt;向左</span>
+        <span id="next">&gt;&gt;向右</span>
+    </div>
+</div>
+<script>
+    var oContent = document.getElementById('content');
+    var oContainer = document.getElementById('container');
+    oContent.innerHTML = oContent.innerHTML + oContent.innerHTML ;
+    var aLi = oContent.getElementsByTagName('li');
+    var oLeft = document.getElementById('left');
+    var oNext = document.getElementById('next');
+    oContent.style.width = aLi.length * (aLi[0].offsetWidth + 5) + 'px';
+    var speed = -2;
+    setInterval(function () {
+        if(oContent.offsetLeft <= -oContent.offsetWidth/2){
+            oContent.style.left = 0;
+        }
+        if (oContent.offsetLeft > 0) {
+            oContent.style.left = -oContent.offsetWidth/2 + 'px';
+        }
+        oContent.style.left = oContent.offsetLeft + speed + 'px';
+    },20);
+    oNext.onmouseover = function () {
+       speed = 2;
+    };
+    oLeft.onmouseover = function () {
+        speed =-2;
+    };
+</script>
+</body>
+</html>

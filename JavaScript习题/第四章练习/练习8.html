@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    for(var i=1000; i<9999; i++){
+       var a = Math.floor(i/1000);
+        var b =Math.floor(i%1000/100);
+        var c =Math.floor(i%1000%100/10);
+        if(i%13==0&&c+b==a){
+            document.write('四位数为='+i+'<br>');
+        }
+    }
+</script>
+</body>
+</html>

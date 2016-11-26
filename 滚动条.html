@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*body{*/  /*防止单击时文本被选中*/
+            /*-webkit-user-select: none;*/
+            /*-moz-user-select: none;*/
+            /*-ms-user-select: none;*/
+            /*user-select: none;*/
+        /*}*/
+        #container{
+            width: 400px;
+            height: 400px;
+            background: #b3b9ba;
+            overflow: hidden;
+        }
+        #text{
+            width: 380px;
+            position: relative;
+            background: #62c583;
+            float: left;
+
+        }
+        #scroll-bar{
+            width: 20px;
+            height: 400px;
+            background: #8262ee;
+            float: left;
+            position: relative;
+
+        }
+        #scroll-btn{
+            width: 20px;
+            height: 20px;
+            background: #dd0d46;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="text">
+        11你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你
+        好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好22
+
+    </div>
+    <div id="scroll-bar">
+        <span id="scroll-btn"></span>
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oText = document.getElementById('text');
+    var oScrollBar = document.getElementById('scroll-bar');
+    var oScrollBtn = document.getElementById('scroll-btn');
+    oScrollBtn.onmousedown = function (e) {
+        e = e||window.event;
+        var iTop = e.clientY-oScrollBtn.offsetTop;
+        document.onmousemove = function (e) {
+            e = e||window.event;
+            var top = e.clientY-iTop;
+            if(top <0){
+                top = 0;
+            }else if(top > oScrollBar.offsetHeight-oScrollBtn.offsetHeight){
+                top =oScrollBar.offsetHeight -oScrollBtn.offsetHeight;
+            }
+            oScrollBtn.style.top = top + "px";
+
+        var a = oScrollBtn.offsetTop / (oScrollBar.offsetHeight-oScrollBtn.offsetHeight);
+        var b =a *(oText.offsetHeight - oContainer.offsetHeight);
+        oText.style.top = -b + "px";
+        return false;
+        };
+        document.onmouseup = function(){
+            document.onmousemove = null;
+        };
+    };
+</script>
+</body>
+</html>

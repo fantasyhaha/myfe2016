@@ -44,9 +44,6 @@ var oDiv2 = document.getElementById('div2');
         e = e || window.event;
         var Left = e.clientX-oDiv1.offsetLeft;
         var Top = e.clientY-oDiv1.offsetTop;
-//        animate(oDiv1,{opacity:50});
-//        animate(oDiv1,{width:100});
-
         document.onmousemove = function (e) {
             e = e || window.event;
             var iLeft = e.clientX-Left;
@@ -66,15 +63,12 @@ var oDiv2 = document.getElementById('div2');
         };
         oDiv1.onmouseup = function () {
             document.onmousemove = null;
-//            oDiv1.style.opacity = 1;
         }
     };
 oDiv2.onmousedown = function (e) {
     e = e || window.event;
     var Left = e.clientX-oDiv2.offsetLeft;
     var Top = e.clientY-oDiv2.offsetTop;
-//    animate(oDiv2,{opacity:60});
-//    animate(oDiv2,{height:100});
     document.onmousemove = function (e) {
         e = e || window.event;
         var iLeft = e.clientX-Left;
@@ -94,7 +88,6 @@ oDiv2.onmousedown = function (e) {
     };
     document.onmouseup = function () {
         document.onmousemove = null;
-//        oDiv2.style.opacity = 1;
     }
 }
 

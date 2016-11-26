@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    var ManAge = 40;
+    ManAge = prompt("请输入你的年龄:","18");
+    if(ManAge > 0&& ManAge < 14){
+       document.write('儿童');
+   }else if(ManAge >= 14&& ManAge<24 ){
+       document.write('青少年');
+   }else if(ManAge > 24&& ManAge<40){
+       document.write('青年');
+   }else if(ManAge >=40&& ManAge<60 ){
+       document.write('中年');
+   }else if(ManAge >= 60&& ManAge<=120){
+       document.write('老年');
+   }else{
+        document.write('你是个大王八！');
+    }
+</script>
+</body>
+</html>

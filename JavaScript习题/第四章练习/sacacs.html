@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            position: relative;
+        }
+        #container div{
+            float: left;
+        }
+        #content1{
+            width: 200px;
+            height: 766px;
+            background: #dd0d46;
+        }
+        #content2{
+            background: #000;
+            width:0;
+            height: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<div id="container">
+    <div id="content1">
+    </div>
+    <div id="content2">
+    </div>
+</div>
+<body>
+<script>
+    var oContent1 = document.getElementById('content1');
+    var oContent2 = document.getElementById('content2');
+    var oContainer = document.getElementById('container');
+    oContent2.style.width = document.documentElement.offsetWidth - oContent1.offsetWidth + 'px';
+    oContent2.style.height = document.documentElement.offsetHeight + 'px';
+</script>
+</body>
+</html>

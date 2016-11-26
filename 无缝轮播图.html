@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>轮播图-划入划出</title>
+    <title>无缝轮播图</title>
     <style>
         *{
             margin: 0;
@@ -23,7 +23,7 @@
             position: relative;
             margin: 100px auto;
             overflow: hidden;
-            border-radius: 70px;
+            border-radius: 75px;
         }
         #content{
             width: 2000px;
@@ -63,7 +63,7 @@
         #arrow{
             position: absolute;
             left: 30px;
-            bottom:180px;
+            bottom: 10px;
         }
         #arrow span{
             float: left;
@@ -73,7 +73,7 @@
             text-align: center;
             line-height: 40px;
             cursor: pointer;
-            margin-right: 360px;
+            margin-right: 5px;
             border-radius: 100px;
             opacity: 0.7;
         }
@@ -82,10 +82,10 @@
 <body>
 <div id="container">
     <div id="content">
-        <div><img class="selected" src="img/1.jpg"/></div>
-        <div><img src="img/2.jpg"/></div>
-        <div><img src="img/3.jpg"/></div>
-        <div><img src="img/4.jpg"/></div>
+        <img src="img/1.jpg"/>
+        <img src="img/2.jpg"/>
+        <img src="img/3.jpg"/>
+        <img src="img/4.jpg"/>
     </div>
     <ul id="menu">
         <li class="selected">1</li>
@@ -104,49 +104,51 @@
     var oContent = document.getElementById('content');
     var aLi = oContainer.getElementsByTagName('li');
     var aImg =oContent.getElementsByTagName('img');
-    var oLt = document.getElementById('lt');
-    var oRt = document.getElementById('rt');
+    var oLast = document.getElementById('lt');
+    var oNext = document.getElementById('rt');
+    oContent.appendChild(aImg[0].cloneNode());
+    oContent.style.width = aImg.length * aImg[0].offsetWidth +'px';
     for(var i=0;i<aLi.length;i++) {
         aLi[i].index = i;
         aLi[i].onmouseover = function () {
             changeImg(this.index);
             iNow = this.index;
-            animate(oContent,{left:-aImg[0].offsetWidth*this.index});
         };
     }
     var iNow = 0;
-    function changeImg(a){
+    oNext.onclick = function(){
+        iNow++;
+        if(iNow == aLi.length + 1){
+            oContent.style.left = 0;
+            iNow = 1;
+        }
+        changeImg(iNow);
+    };
+    oLast.onclick = function () {
+        iNow--;
+        if(iNow == -1){
+            oContent.style.left = -aLi.length * aImg[0].offsetWidth +'px';
+            iNow = 3;
+        }
+        changeImg(iNow);
+    };
+           function changeImg(a){
         for(var j=0; j<aLi.length; j++){
             aLi[j].className = '';
         }
-        aLi[a].className = 'selected';
+        aLi[a == aLi.length ? 0 : a].className = 'selected';
+        animate(oContent,{left:-aImg[0].offsetWidth* a});
     }
-    oRt.onclick = function(){
-        iNow++;
-        if( iNow ==aLi.length){
-            iNow = 0;
-        }
-        changeImg(iNow);
-        animate(oContent,{left:-aImg[0].offsetWidth*iNow});
-    };
-    oLt.onclick = function(){
-        iNow--;
-        if( iNow ==-1){
-            iNow = aLi.length-1;
-        }
-        changeImg(iNow);
-        animate(oContent,{left:-aImg[0].offsetWidth*iNow});
-    };
     var timer;
-    timer = setInterval(function(){
-        oRt.onclick();
-    },1000);
+       timer = setInterval(function () {
+            oNext.onclick();
+        },1000);
     oContainer.onmouseover = function () {
         clearInterval(timer);
     };
     oContainer.onmouseout = function () {
-        timer = setInterval(function(){
-            oRt.onclick();
+        timer = setInterval(function () {
+            oNext.onclick();
         },1000);
     }
 </script>

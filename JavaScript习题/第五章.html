@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function mySort() {
+        var tags = new Array();
+        Array().arguments =[];
+        for(var i=0;i<arguments.length;i++){
+            tags.sort(function (a,b) {
+                return a-b;
+            })
+        }
+        return tags;
+    }
+    var result = mySort(50,11,16,32,24,99,57,100);
+    console.log(result);
+
+
+</script>
+</body>
+</html>

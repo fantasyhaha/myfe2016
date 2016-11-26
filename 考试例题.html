@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        #container1{
+            margin: 50px auto;
+            margin-bottom: 0;
+            width: 400px;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+        #content1{
+            position: relative;
+            width: 2400px;
+            height: 320px;
+        }
+        #content1 img {
+            float: left;
+        }
+        #container2{
+            margin: 1px auto;
+            width: 400px;
+            height: 94px;
+            position: relative;
+            overflow:hidden;
+        }
+        #content2{
+            position: relative;
+            width: 910px;
+            height: 94px;
+            background: #62c583;
+
+        }
+        #content2 img{
+            float: left;
+            width: 120px;
+            height: 94px;
+            margin-left: 10px;
+        }
+       #arrow{
+           position: absolute;
+           bottom: 160px;
+           left: 30px;
+       }
+       #arrow span{
+           background: #17bab0;
+           float: left;
+           width: 40px;
+           height: 40px;
+           margin-right: 260px;
+           text-align:center;
+           line-height: 40px;
+           cursor: pointer;
+           font-size: 20px;
+           border-radius: 100px;
+           opacity: 0;
+       }
+        /*img .cur{*/
+            /*cursor:url(005.jpg), url("005.jpg"),auto;}*/
+    </style>
+</head>
+<div id="container1">
+    <div id="content1">
+        <img src="img1/1.jpg"/>
+        <img src="img1/2.jpg"/>
+        <img src="img1/3.jpg"/>
+        <img src="img1/4.jpg"/>
+        <img src="img1/5.jpg"/>
+        <img src="img1/6.jpg"/>
+    </div>
+    <div id="arrow">
+        <span id="last">&lt</span>
+        <span id="next" style="margin-right: 0;">&gt</span>
+    </div>
+</div>
+<div id="container2">
+    <div id="content2">
+        <img src="img1/1.jpg"/>
+        <img src="img1/2.jpg"/>
+        <img src="img1/3.jpg"/>
+        <img src="img1/4.jpg"/>
+        <img src="img1/5.jpg"/>
+        <img src="img1/6.jpg"/>
+    </div>
+</div>
+<body>
+<script src="jslib.js"></script>
+<script>
+    var oContainer1 = document.getElementById('container1');
+    var oContent1 = document.getElementById('content1');
+    var oContent2 = document.getElementById('content2');
+    var aImg1 = oContent1.getElementsByTagName('img');
+    var aImg2 = oContent2.getElementsByTagName('img');
+    var oLast = document.getElementById('last');
+    var oNext = document.getElementById('next');
+    oContent1.appendChild(aImg1[0].cloneNode());
+    oContent2.appendChild(aImg2[0].cloneNode());
+    oContent2.appendChild(aImg2[5].cloneNode());
+    oContent1.style.width = aImg1.length * aImg1[0].offsetWidth + 'px';
+    oContent2.style.width = (aImg2.length+1) * aImg2[0].offsetWidth + 'px';
+    var index = 0;
+    var iNow = 0;
+
+    for(var i=0;i<aImg1.length;i++) {
+
+        oContainer1.onmouseover = function (e) {
+            e=e||window.event;
+            var x = e.clientX;
+            if(x>document.body.clientWidth/2){
+                oNext.style.opacity = 1;
+            }
+            else{
+                oNext.style.opacity = 0;
+            }
+            if(x<document.body.clientWidth/2){
+                oLast.style.opacity = 1;
+            }
+        };
+        oContainer1.onmouseout = function () {
+                oNext.style.opacity = 0;
+                oLast.style.opacity = 0;
+        };
+    }
+    oNext.onclick = function () {
+            iNow++;
+            if( iNow ==7){
+                oContent1.style.left = 0;
+                oContent2.style.left = 0;
+                iNow = 1;
+            }
+            changeImg(iNow);
+    };
+    oLast.onclick = function () {
+        iNow--;
+        if(iNow ==-1){
+            oContent1.style.left = -(aImg1.length-1) * aImg1[0].offsetWidth + 'px';
+            oContent2.style.left = -(aImg2.length-1) * aImg2[0].offsetWidth + 'px';
+            iNow =5;
+        }
+        changeImg(iNow);
+    };
+    function changeImg(){
+        for(var i=0;i<aImg1.length;i++){
+            aImg1[i].className = '';
+        }
+        animate(oContent1,{left:-aImg1[0].offsetWidth*iNow});
+        animate(oContent2,{left:(-aImg2[0].offsetWidth-10)*(iNow-1)});
+
+    }
+</script>
+</body>
+</html>

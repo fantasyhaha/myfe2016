@@ -11,12 +11,12 @@
         ol,ul{
             list-style: none;
         }
-        body{
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+        /*body{*/
+            /*-webkit-user-select: none;*/
+            /*-moz-user-select: none;*/
+            /*-ms-user-select: none;*/
+            /*user-select: none;*/
+        /*}*/
         #container{
             width: 600px;
             height: 500px;
@@ -135,7 +135,7 @@
         };
         var timer;
         timer = setInterval(function(){
-            oNext.onclick();
+            oLast.onclick();
         },2000);
         oContainer.onmouseover = function () {
             clearInterval(timer);

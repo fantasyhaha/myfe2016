@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            background-image: url(../img/2.jpg);
+        }
+        #clock{
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            border: 1px solid black;
+            border-radius: 50%;
+            position: relative;
+            background: #090b45;
+        }
+
+        #content li{
+            width: 2px;
+            height: 8px;
+            position: absolute;
+            background: #dd0d46;
+            top: 0;
+            left: 98px;
+            -webkit-transform-origin:center 100px ;
+        }
+        #content li:nth-child(5n+1){
+            height: 30px;
+            width: 4px;
+        }
+        #hour{
+            width: 6px;
+            height: 45px;
+            background: #17bab0;
+            position: absolute;
+            border-radius:10px;
+            top: 59px;
+            left: 92px;
+            -webkit-transform-origin:center 37px;
+        }
+        #minute{
+            width: 4px;
+            height: 55px;
+            background: #ddb21c;
+            position: absolute;
+            border-radius:10px;
+            top: 45px;
+            left: 98px;
+            -webkit-transform-origin:center 100%;
+        }
+        #second{
+            width: 2px;
+            height: 65px;
+            background: #53ba29;
+            position: absolute;
+            border-radius:10px;
+            top: 35px;
+            left: 99px;
+            -webkit-transform-origin:center 100%;
+            -webkit-transform: rotate(6deg);
+        }
+
+    </style>
+</head>
+<body>
+<div id="clock">
+    <ul id="content">
+
+    </ul>
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+</div>
+<script>
+    var oContent = document.getElementById('content');
+    var oHour = document.getElementById('hour');
+    var oMinute = document.getElementById('minute');
+    var oSecond = document.getElementById('second');
+    var html ='';
+    for(var i=0;i<60;i++){
+        html+='<li style="-webkit-transform: rotate('+i*6+'deg)"></li>';
+        oContent.innerHTML = html;
+    }
+    function run(){
+        var date = new Date();
+        var iMinute = date.getMinutes();
+        var iSecond = date.getSeconds();
+        var iHour = date.getHours()+iMinute/60;
+        oSecond.style.webkitTransform = 'rotate('+iSecond*6+'deg)';
+        oMinute.style.webkitTransform = 'rotate('+iMinute*6+'deg)';
+        oHour.style.webkitTransform = 'rotate('+iHour*30+'deg)';
+    }
+    run();
+    setInterval(function () {
+        run()
+    },1000);
+</script>
+</body>
+</html>

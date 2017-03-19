@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul,li{
+		list-style: none;
+
+	}
+	</style>
+</head>
+<body>
+	<div id="app">
+		是否需要额外付费设施: <input type="checkbox" @click="getFacility">
+		<ul>
+			<li v-for="(val,index) in facility">
+			{{val.name}} ({{val.price}})
+			<input type="checkbox"  @click="add(index)">
+			</li>
+		</ul>
+
+		订单信息费用
+		<ul>
+			<li v-for="val in feeFacility">{{val.name}} {{val.price}}</li>
+		</ul>
+		总金额:{{total}}
+	</div>
+<script src="vue.js"></script>
+<script>
+	new Vue({
+		el:"#app",
+		data:{
+			facility:[],
+			feeFacility:[{name:"群力花园豪华型",price:400}],
+		},
+		computed:{
+			total:function(){
+				var t = 0;
+				this.feeFacility.forEach(function(val){
+					t+=val.price;
+				});
+				return t;
+			}
+		},
+		methods:{
+			getFacility:function(){
+				if(event.target.checked){
+					this.facility=[{name:"床",price:100},{name:"沙发",price:200},{name:"wifi",price:300}];
+				}else{
+					this.facility=[];
+					this.feeFacility = [{name:"群力花园豪华型",price:400}];
+				}
+			},
+			add:function(index){
+				var val = this.facility[index];
+				this.feeFacility = [{name:"群力花园豪华型",price:400}];
+				if(event.target.checked){
+					val.checked = true;
+				}else{
+					val.checked = false;
+				}
+				var _this = this;
+				this.facility.forEach(function(val){
+					if(val.checked){
+						_this.feeFacility.push(val);
+					}
+				})
+			}
+		}
+	});
+</script>
+</body>
+</html>

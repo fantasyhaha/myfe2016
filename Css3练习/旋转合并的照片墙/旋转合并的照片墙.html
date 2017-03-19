@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转合并的照片墙</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            width:100%;
+            height: 100%;
+        }
+        #container{
+            width:100%;
+            height: 100%;
+            background: url("img/bg.jpg") ;
+        }
+        .aa{
+            width: 125px;
+            height: 125px;
+            position: absolute;
+            left:-150px;
+            top:-150px;
+            border:5px solid white;
+            -webkit-transition: all ease 1s;
+        }
+        span{
+            position: absolute;
+            width: 125px;
+            height: 125px;
+            background: blue;
+            opacity: 0;
+        }
+        #prev,#next{
+            width: 40px;
+            height: 80px;
+            position: absolute;
+            top: 50%;
+            margin-top:-40px;
+            display: none;
+        }
+        #prev{
+            left:0;
+            background: url("img/prev.png")center center no-repeat white;
+            border-radius:0 10px 10px 0;
+
+        }
+        #next{
+            right:0;
+            background: url("img/next.png")center center no-repeat white;
+            border-radius:10px 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+</div>
+<div id="prev"></div>
+<div id="next"></div>
+<script>
+    var oContianer = document.getElementById('container');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var num = 0;
+    var iNow = 0;
+    for(var i=0;i<24;i++){
+        var oImg = new Image();
+        oImg.onload = function () {
+            num++;
+            if(num ==48){
+                loadSuccess();
+            }
+        };
+        oImg.src = "img/"+(i+1)+".jpg";
+    }
+    for(var i=0;i<24;i++){
+        var oImg = new Image();
+        oImg.onload = function () {
+            num++;
+            if(num ==48){
+                loadSuccess();
+            }
+        };
+        oImg.src = "img/thumbs/"+(i+1)+".jpg";
+    }
+    var x = (oContianer.offsetWidth - 135*6)/7;
+    var y = (oContianer.offsetHeight - 135*4)/5;
+    function loadSuccess(){
+        for(var i=0;i<24;i++){
+            var oDiv = document.createElement('div');
+            oDiv.className = 'aa';
+            oDiv.innerHTML = "<span></span>";
+            oDiv.pos = {
+                row:Math.floor(i/6),
+                col:i%6
+            };
+            oDiv.idx = i;
+            oDiv.style.background = 'url(img/thumbs/'+(i+1)+'.jpg)';
+            oDiv.onclick = fn;
+            oContianer.appendChild(oDiv);
+        }
+        var aDiv = oContianer.getElementsByTagName('div');
+        var index = 24;
+        var timer=setInterval(function () {
+            index--;
+            aDiv[index].style.left = aDiv[index].pos.col*135 + x*(aDiv[index].pos.col+1) +"px";
+            aDiv[index].style.top = aDiv[index].pos.row*135 + y*(aDiv[index].pos.row+1) + "px";
+            aDiv[index].style.transform = 'rotate('+(Math.random()*40-20)+'deg)';
+            if(index == 0){
+                clearInterval(timer);
+            }
+        },100);
+            var bFlag = true;
+            function fn(){
+                if(bFlag){
+                    var disX = (oContianer.offsetWidth - (127*6))/2;
+                    var disY = (oContianer.offsetHeight - (127*4))/2;
+                    for(var i=0;i<aDiv.length;i++){
+                        aDiv[i].style.left = 127*aDiv[i].pos.col +disX+"px";
+                        aDiv[i].style.top = 127*aDiv[i].pos.row +disY+"px";
+                        aDiv[i].style.transform = "rotate(0deg)";
+                        aDiv[i].style.border = "1px solid white";
+                        var oSpan = aDiv[i].getElementsByTagName('span')[0];
+                        oSpan.style.opacity = 1;
+                        var iLeft = -125*aDiv[i].pos.col;
+                        var iTop = -125*aDiv[i].pos.row;
+                        oSpan.style.background = "url(img/"+(this.idx + 1)+".jpg) "+iLeft+"px "+iTop+"px";
+                        oPrev.style.display = 'block';
+                        oNext.style.display = 'block';
+                        iNow = this.idx;
+                        clearInterval(timer);
+                    }
+                }else{
+                    for(var a=0;a<aDiv.length;a++){
+                        aDiv[a].style.left = aDiv[a].pos.col*135 + x*(aDiv[a].pos.col+1) +"px";
+                        aDiv[a].style.top = aDiv[a].pos.row*135 + y*(aDiv[a].pos.row+1) + "px";
+                        aDiv[a].style.transform = 'rotate('+(Math.random()*40-20)+'deg)';
+                        aDiv[a].style.border = "5px solid white";
+                        aDiv[a].getElementsByTagName('span')[0].style.opacity =0;
+                        oPrev.style.display = 'none';
+                        oNext.style.display = 'none';
+
+                    }
+                }
+                bFlag = !bFlag;
+
+            }
+        oPrev.onclick = function () {
+            var arr = [];
+            for(var i=0; i<24; i++){
+                arr.push(i);
+            }
+            arr.sort(function(a,b){
+                return Math.random()-0.5;
+            });
+            iNow--;
+            if(iNow ==-1){
+                iNow = aDiv.length -1;
+            }
+            var timer1 = setInterval(function () {
+                var iNum = arr.pop();
+                var oSpan = aDiv[iNum].getElementsByTagName('span')[0];
+                oSpan.style.backgroundImage = 'url(img/'+(iNow+1)+'.jpg)';
+                if(arr.length ==0){
+                    clearInterval(timer1);
+                }
+            },50)
+        };
+        oNext.onclick = function () {
+            var arr = [];
+            for(var i=0; i<24; i++){
+                arr.push(i);
+            }
+            arr.sort(function(a,b){
+                return Math.random()-0.5;
+            });
+            iNow++;
+            if(iNow ==aDiv.length){
+                iNow = 0;
+            }
+            var timer = setInterval(function () {
+                var iNum = arr.pop();
+                var oSpan = aDiv[iNum].getElementsByTagName('span')[0];
+                oSpan.style.backgroundImage = 'url(img/'+(iNow+1)+'.jpg)';
+                if(arr.length ==0){
+                    clearInterval(timer);
+                }
+            },50)
+        }
+
+    }
+</script>
+</body>
+</html>

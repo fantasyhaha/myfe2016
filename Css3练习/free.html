@@ -1,100 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+    <meta charset="utf-8" />
+    <title>vertical-align_CSS参考手册_web前端开发参考手册系列</title>
+    <meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
     <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        #container{
-            width: 600px;
-            height: 400px;
-            margin: 50px auto;
-            position: relative;
-            -webkit-perspective: 800px;
-        }
-        img{
-            width: 600px;
-            height: 400px;
-            position: absolute;
-            left:0;
-            top:0;
-            -webkit-transform-origin: center bottom;
-            -webkit-transform: rotateX(180deg);
-            opacity:0;
-        }
-        span{
-            width: 55px;
-            height: 55px;
-            background: #cccccc;
-            text-align: center;
-            line-height: 55px;
-            -webkit-border-radius: 50%;
-            position: absolute;
-            top:50%;
-            margin-top:-23px;
-            font-size: 40px;
-            color:#fff;
-            -webkit-text-stroke: 1px #000;
-            box-shadow: 0 0 3px 2px rgba(0,0,0,0.3);
-        }
-        #prev{
-            left:-100px;
-        }
-        #next{
-            right: -100px;
-        }
-        .show{
-            animation: show 1s ease forwards;
-        }
-        @-webkit-keyframes show {
-            0%{
-            }
-            50%{
-                -webkit-transform: rotateX(12deg);
-            }
-            58%{
-                -webkit-transform: rotateX(-10deg);
-            }
-            68%{
-                -webkit-transform: rotateX(8deg);
-            }
-            75%{
-                -webkit-transform: rotateX(-6deg);
-            }
-            82%{
-                -webkit-transform: rotateX(4deg);
-            }
-            90%{
-                -webkit-transform: rotateX(-2deg);
-            }
-            100%{
-                -webkit-transform: rotateX(0deg);
-                opacity: 1;
-            }
-        }
+        .test p{border:1px solid #000;font-size:16px;line-height:2;}
+        .test a{margin-left:5px;font-size:12px;}
+        .baseline a{vertical-align:baseline;}
+        .sub a{vertical-align:sub;}
+        .super a{vertical-align:super;}
+        .top a{vertical-align:top;}
+        .text-top a{vertical-align:text-top;}
+        .middle a{vertical-align:middle;}
+        .bottom a{vertical-align:bottom;}
+        .text-bottom a{vertical-align:text-bottom;}
+        .length a{vertical-align:10px;}
     </style>
 </head>
 <body>
-<div id="container">
-    <div id="img">
-        <img src="img/1.jpg" alt="" class="show"/>
-        <img src="img/2.jpg" alt=""/>
-        <img src="img/3.jpg" alt=""/>
-        <img src="img/4.jpg" alt=""/>
-    </div>
-        <span id="prev">
-            &lt;
-        </span>
-        <span id="next">
-            &gt;
-        </span>
-</div>
-
-
-
-
+<ul class="test">
+    <li class="baseline">
+        <strong>与基线对齐</strong>
+        <p>参考内容<a href="?">基线对齐</a></p>
+    </li>
+    <li class="sub">
+        <strong>与参考内容的下标对齐</strong>
+        <p>参考内容<a href="?">下标对齐</a></p>
+    </li>
+    <li class="super">
+        <strong>与参考内容的上标对齐</strong>
+        <p>参考内容<a href="?">上标对齐</a></p>
+    </li>
+    <li class="top">
+        <strong>对象的内容与对象顶端对齐</strong>
+        <p>参考内容<a href="?">要对齐的内容</a></p>
+    </li>
+    <li class="text-top">
+        <strong>对象的文本与对象顶端对齐</strong>
+        <p>参考内容<a href="?">要对齐的内容</a></p>
+    </li>
+    <li class="middle">
+        <strong>对象的内容与对象中部对齐</strong>
+        <p>参考内容<a href="?">要对齐的内容</a></p>
+    </li>
+    <li class="bottom">
+        <strong>对象的内容与对象底端对齐</strong>
+        <p>参考内容<a href="?">要对齐的内容</a></p>
+    </li>
+    <li class="text-bottom">
+        <strong>对象的文本与对象顶端对齐</strong>
+        <p>参考内容<a href="?">要对齐的内容</a></p>
+    </li>
+    <li class="length">
+        <strong>与基线算起的偏移量</strong>
+        <p>参考内容<a href="?">偏移量对齐</a></p>
+    </li>
+</ul>
 </body>
 </html>

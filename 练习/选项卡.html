@@ -1,107 +1,92 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="styles/reset.css" type="text/css" />
+    <link rel="stylesheet" href="styles/style.css"/>
     <style>
-        *{
-            margin: 0;
-            padding: 0;
+        .header{
+            height: 105px;
+            background: #ff0000;
         }
-        ul{
-            list-style: none;
+        .header-box{
+            width: 990px;
+            height: 105px;
+            background: #00ff00;
+            margin:0 auto;
         }
-        #container{
-            margin: 100px auto;
-            width: 400px;
-            height: 300px;
-            background: #17bab0;
-            position: relative;
-            overflow: hidden;
+        .content{
+            width: 990px;
+            margin:0 auto;
         }
-        #list{
-            background: #ffffff;
-            height: 30px;
-        }
-        #list li{
-            width: 90px;
-            height: 30px;
-            margin: 0;
-            text-align: center;
-            line-height: 30px;
-            background: #53ba29;
-            display: inline-block;
-            cursor: pointer;
-        }
-        #content{
-            width: 1600px;
-            height: 300px;
-            position: absolute;
-            background: #db33cf;
-        }
-        #content div{
-            width: 400px;
-            height: 270px;
-            /*background: #055cba;*/
+        .side{
+            width: 185px;
+            height: 500px;
+            background: #00A5FF;
             float: left;
         }
-       #list .selected{
-            background: #dd0d46;
-            font-size: 20px;
+        .content-box{
+            width: 786px;
+            height: 500px;
+            background: #444444;
+            float: right;
         }
-       #arrow{
-           position: absolute;
-           bottom: 5px;
-           left: 5px;
-       }
-        #arrow span{
-            width: 15px;
-            height: 10px;
-            cursor: pointer;
-            font-size: 15px;
-            text-align: center;
-            line-height: 10px;
+        .top{
+            height: 320px;
+            background: #BE46D8;
+        }
+        .c-left{
+            width: 550px;
+            height: 320px;
+            float: left;
+            background: #B1D410;
+        }
+        .c-right{
+            width: 230px;
+            height: 320px;
+            float: right;
+            background: #E31559;
         }
     </style>
 </head>
 <body>
-<div id="container">
-    <ul id="list">
-        <li class="selected">第一句</li>
-        <li>第二句</li>
-        <li>第三句</li>
-        <li>第四句</li>
-    </ul>
-    <div id="content">
-        <div>哈哈</div>
-        <div>嘿嘿</div>
-        <div>呼呼</div>
-        <div>哼哼</div>
+
+<div class="container">
+    <div class="header">
+        <div class="header-box">
+            <div class="header-top">
+
+            </div>
+            <div class="header-bottom">
+
+            </div>
+        </div>
     </div>
-    <div id="arrow">
-        <span id="last">&lt</span>
-        <span id="next">&gt</span>
-    </divid>
+
+    <div class="content">
+        <div class="side">
+
+        </div>
+        <div class="content-box">
+            <div class="top">
+                <div class="c-left">
+
+                </div>
+                <div class="c-right">
+
+                </div>
+            </div>
+            <div class="bottom">
+
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+
+    </div>
+
 </div>
-<script src="../jslib.js"></script>
-<script>
-    var oContainer = document.getElementById('container');
-    var oContent = document.getElementById('content');
-    var aDiv = oContainer.getElementsByTagName('div');
-    var aLi = oContainer.getElementsByTagName('li');
-
-    oContent.appendChild(aDiv[1].cloneNode());
-    for(var i=0;i<aLi.length;i++){
-        aLi[i].index = i;
-        aLi[i].onclick = function () {
-            for(var j=0;j<aLi.length;j++){
-                aLi[j].className = '';
-            }
-            aLi[this.index == aLi.length ? 0 : this.index].className = 'selected';
-            animate(oContent,{left:-aDiv[1].offsetWidth*this.index});
-        }
-    }
-
-</script>
 </body>
 </html>

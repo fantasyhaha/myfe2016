@@ -1,0 +1,26 @@
+body{
+	width:100%;
+	height:400px;
+	background:black;
+	.container{
+		width:1002px;
+		height:420px;
+		background:red;
+		margin: 0 auto;
+		float: left;
+		.content{
+			width: 902px;
+			height: 350px;
+			margin: 0 auto;
+			background:black;
+			padding: 100px;
+			cursor: pointer;
+			float: left; 
+		}
+		@for $i from 1 through 5{
+  			.ee#{$i}{
+				width: $i * 20px;
+  			}	
+		}
+	}
+}

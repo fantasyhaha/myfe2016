@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul,li{
+			text-decoration: none;
+			list-style: none;
+		}
+		#container{
+			width: 400px;
+			height: 300px;
+			margin: 0 auto;
+			overflow: hidden;
+			position: relative;
+		}
+		#div1{
+			width: 2400px;
+			height: 300px;
+		
+		}
+		#div1 li{
+			float: left;
+			display: block;
+			width: 400px;
+			height: 300px;
+			margin: 0 auto;
+
+		}
+		img{
+			width: 400px;
+			height: 300px;
+			border-radius: 75px;
+			cursor: auto;	
+		}
+		#arrow{
+			position: absolute;
+			bottom:150px;
+			left: 0px;
+			color: pink;
+		}
+		#arrow span{
+			float: left;	
+			width: 30px;
+			height: 20px;
+			cursor: pointer;
+			line-height: 20px;
+			text-align: center;
+			background: #b3b9ba;
+			margin-right:340px;
+			opacity: 0.7; 
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="arrow">
+		<span id="lt">&lt</span>
+		<span id="rt" style="margin-right: 0;">&gt</span>
+	</div>
+	<div id="div1">
+		<ul>
+			<li><a href=""><img src="../img/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="../img/2.jpg" alt=""></a></li>
+			<li><a href=""><img src="../img/3.jpg" alt=""></a></li>
+			<li><a href=""><img src="../img/4.jpg" alt=""></a></li>
+			<li><a href=""><img src="../img/5.jpg" alt=""></a></li>
+			<li><a href=""><img src="../img/6.jpg" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+$(function{
+	$("#arrow span").on("click",function(){
+		var $rollobj=$("#div1");
+		var rollwidth=$rollobj.find("li").outerWidth();
+		$rollobj.stop(true,false).animate({ left : -rollWidth*2},1000);
+	})
+})
+</script>
+</html>

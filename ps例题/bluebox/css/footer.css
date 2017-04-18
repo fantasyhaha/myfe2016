@@ -1,0 +1,56 @@
+.footer{
+	width: 100%;
+	height: 176px;
+	overflow: hidden;
+	background: #31333e;
+}
+.sub-footer{
+	width: 1002px;
+	height:176px;
+	margin: 0 auto;
+	position: relative;
+}
+.menu{
+	height: 16px;
+	margin-top: 44px;	
+}
+.menu li{
+	float: left;
+	padding: 0 14px;
+	border-right: 1px solid #e2e7ed;
+	color:#e2e7ed;
+}
+.menu li:last-child{
+	border-right: none;
+}
+.menu li:first-child{
+	padding-left: 0;
+}
+.sub-footer h4{
+	height: 20px;
+	width: 290px;
+	position: absolute;
+	left: 0;
+	top: 25px;
+	color:#e2e7ed;
+	font-size: 15px;
+	font-weight: 400; 
+}
+.sub-footer h5{
+	height: 16px;
+	width: 600px;
+	position: absolute;
+	left: 0;
+	top: 76px;
+	color: #e2e7ed;
+	font-size: 13px;
+	font-weight: 400;
+}
+.footer-logo{
+	width: 276px;
+	height: 37px;
+	position: absolute;
+	right: 1px;
+	top: 1px;
+	background: url("../image/sprite.png") -10px -191px no-repeat;
+}

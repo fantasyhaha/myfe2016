@@ -1,0 +1,61 @@
+.works{
+	width: 100%;
+	overflow: hidden;
+	background: #e2e7ed;
+}
+.sub-works{
+	width: 1002px;
+	height: 500px;
+	
+	margin: 0 auto;
+}
+.work-title{
+	height: 70px;
+	line-height: 70px;
+	color: #888a8c;
+	font-size: 30px;
+}
+.works-img{
+	width: 1002px;
+	height: 404px;
+}
+.works-img div{
+	width: 250px;
+	height: 200px;
+	float: left;
+	position: relative;
+	
+}
+.b a{
+	float: left;
+	width:70px;
+	height: 40px;
+	/*background: black;*/
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.a{
+	background: url("../image/works.png") 0px 0px no-repeat;
+}
+.b{
+	background: url("../image/works.png") -250px 0px no-repeat;
+}
+.c{
+	background: url("../image/works.png") -500px 0px no-repeat;
+}
+.d{
+	background: url("../image/works.png") -750px 0px no-repeat;
+}
+.e{
+	background: url("../image/works.png") 0px -200px no-repeat;
+}
+.f{
+	background: url("../image/works.png") -250px -200px no-repeat;
+}
+.g{
+	background: url("../image/works.png") -500px -200px no-repeat;
+}
+.h{
+	background: url("../image/works.png") -750px -200px no-repeat;
+}

@@ -1,0 +1,29 @@
+.banner{
+	width: 	100%;
+	overflow: hidden;
+	background: #31333e;
+}
+.banner-content{
+	width: 1002px;
+	height: 460px;
+	margin: 0 auto;
+	position: relative;
+}
+.banner-content span{
+	width: 31px;
+	height: 51px;
+	display: block;
+	float: left;
+	position: absolute;
+	top: 204px;
+	cursor: pointer;
+	z-index: 999;
+}
+.lt{
+	left:0;
+	background: url("../image/sprite.png") -56px -1px no-repeat;
+}
+.gt{
+	right:0;
+	background: url("../image/sprite.png") -100px -1px no-repeat;
+}

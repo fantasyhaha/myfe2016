@@ -1,0 +1,45 @@
+.dialog-mask{
+	position: absolute;
+	right: 0;
+	left: 0;
+	top: 50px;
+	bottom: 0;
+	background: black;
+	opacity: 0.7;
+}
+.boom{
+	width: 300px;
+	height: 400px;
+	background: rgba(0,0,0,0.5);
+	margin: 0 auto;
+}
+.dialog-box{
+	width: 400px;
+	height: 300px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -150px;
+	background: white;
+}
+.head{
+	width: 100%;
+	height: 20px;
+	background:rgba(62,150,42,0.7);
+
+
+}
+.lf,.rt{
+	width: auto;
+	display: inline-block;
+	position: absolute;
+
+}
+.lf{
+	left: 0;
+}
+.rt{
+	right: 0;
+	cursor: pointer;
+}
